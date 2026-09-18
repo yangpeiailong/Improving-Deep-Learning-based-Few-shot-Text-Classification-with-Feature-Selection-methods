@@ -1,0 +1,28 @@
+schema_version: 1
+environment_id: windows_pascal_py312_v2
+expected:
+  python_major_minor: "3.12"
+  torch: "2.6.0+cu124"
+  torch_cuda: "12.4"
+  cuda_available: true
+  device_name_contains: "GTX 1080 Ti"
+  device_capability: [6, 1]
+  required_cuda_architecture: "sm_61"
+packages:
+  numpy: "1.26.4"
+  scipy: "1.15.2"
+  pandas: "2.2.3"
+  scikit-learn: "1.6.1"
+  transformers: "4.49.0"
+  tokenizers: "0.21.0"
+  huggingface-hub: "0.29.1"
+  safetensors: "0.5.3"
+  tqdm: "4.67.1"
+  psutil: "7.0.0"
+  regex: "2024.11.6"
+  requests: "2.32.3"
+tests:
+  matrix_size: 512
+  lstm_batch_size: 4
+  lstm_sequence_length: 32
+  bert_sequence_length: 24

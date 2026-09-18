@@ -1,0 +1,20 @@
+schema_version: 1
+extends: base.yaml
+experiment_id: runtime_v1
+datasets: [ag_news, imdb, wos5736]
+models: [random_cnn, random_lstm, bert_base, gcn]
+feature_selection:
+  selectors: [none, df, ig, dfs]
+  feature_counts: [1000]
+measurement:
+  warmup_runs: 1
+  measured_runs: 3
+  synchronize_cuda: true
+  include_feature_selection_time: true
+  include_preprocessing_time: false
+  include_checkpoint_io: false
+  report_gpu_peak_memory: true
+  report_vocabulary_size: true
+  report_mean_sequence_length: true
+output:
+  directory: runtime/runtime_v1

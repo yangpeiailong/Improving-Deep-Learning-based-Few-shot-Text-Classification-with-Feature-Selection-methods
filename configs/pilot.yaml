@@ -1,0 +1,21 @@
+schema_version: 1
+extends: base.yaml
+experiment_id: pilot_v1
+purpose: Verify leakage-free behavior and estimate whether the main conclusion survives.
+datasets: [20ng, ag_news, imdb, wos5736]
+models:
+  - random_wa
+  - random_cnn
+  - random_lstm
+  - bert_base
+  - gcn
+feature_selection:
+  selectors: [none, df, ig, dfs]
+  feature_counts: [1000]
+random_seeds: [42]
+cross_validation:
+  outer_folds: 5
+training:
+  use_early_stopping: true
+output:
+  directory: pilot/pilot_v1

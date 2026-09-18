@@ -1,0 +1,38 @@
+schema_version: 1
+experiment_id: feature_count_sensitivity_v1
+
+# Chosen before this sensitivity run. These datasets span long topic text,
+# ordinal sentiment, binary filtering, and scientific-domain classification.
+datasets: [20ng, amazon_review_full, farm_ads, wos5736]
+folds: [0, 1, 2, 3, 4]
+selectors: [df, ig, dfs]
+analysis_feature_counts: [500, 1000, 1500, 2000]
+new_feature_counts: [500, 1500, 2000]
+
+families:
+  classic:
+    base_config: formal_classic_main.yaml
+    runner: run_neural_smoke.py
+    models:
+      - random_wa
+      - fasttext_wa
+      - random_cnn
+      - fasttext_cnn
+      - random_lstm
+      - fasttext_lstm
+  gcn:
+    base_config: formal_gcn.yaml
+    runner: run_gcn.py
+    models: [fasttext_residual_word_gcn]
+  bert:
+    base_config: formal_bert.yaml
+    runner: run_bert.py
+    models: [bert_cls]
+
+output:
+  base_directory: supplement/feature_count_v1
+  derived_directory: derived/feature_count_v1
+  save_predictions: false
+  save_selected_features: true
+  save_training_history: true
+  save_model_checkpoints: false

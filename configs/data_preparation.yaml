@@ -1,0 +1,21 @@
+schema_version: 1
+version: v1
+identity:
+  method: exact_processed_text_sha256
+  strip_outer_whitespace: true
+deduplication:
+  same_text_same_label: keep_first
+  same_text_conflicting_labels: remove_entire_group
+dataset_transforms:
+  default:
+    strip_outer_whitespace: true
+  20ng:
+    strip_outer_whitespace: true
+    remove_flattened_leading_headers: true
+    header_scan_max_characters: 2500
+outputs:
+  texts_filename: texts.txt
+  labels_filename: labels.txt
+  records_filename: records.csv
+  exclusions_filename: exclusions.csv
+  report_filename: preparation_report.json

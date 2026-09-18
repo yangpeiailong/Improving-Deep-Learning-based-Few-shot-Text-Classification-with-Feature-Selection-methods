@@ -1,0 +1,56 @@
+schema_version: 1
+experiment_id: fasttext_residual_gcn_smoke_v2
+data_version: v1
+split_version: v1
+split_family: primary
+datasets: [20ng]
+folds: [0]
+seed: 42
+device: auto
+deterministic: true
+
+tokenizer:
+  unicode_normalization: NFKC
+  html_unescape: true
+  remove_html_tags: true
+  lowercase: true
+  token_pattern: unicode_words_with_internal_apostrophe
+
+feature_selection:
+  selectors: [none, dfs]
+  feature_count: 1000
+  minimum_document_frequency: 1
+
+models: [fasttext_residual_word_gcn]
+
+graph:
+  window_size: 10
+  edge_weight: positive_pmi
+  self_loops: true
+  normalization: symmetric
+  document_representation: normalized_term_frequency
+
+architecture:
+  embedding_dimension: 100
+  embeddings_trainable: false
+  hidden_dimension: 128
+  output_dimension: 100
+  dropout: 0.5
+  residual_scale_initial: 0.1
+
+training:
+  optimizer: adam
+  learning_rate: 0.01
+  weight_decay: 0.0005
+  maximum_epochs: 40
+  minimum_epochs: 10
+  early_stopping_patience: 15
+  early_stopping_min_delta: 0.0001
+  gradient_clip_norm: 5.0
+
+output:
+  directory: diagnostics/gcn_smoke_v2
+  save_predictions: true
+  save_selected_features: true
+  save_training_history: true
+  save_model_checkpoints: false

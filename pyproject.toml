@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fs-lrtc"
+version = "0.1.0"
+description = "Feature selection experiments for deep text classification under limited labeled data"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "PyYAML>=6.0.2,<7",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

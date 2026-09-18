@@ -1,0 +1,60 @@
+schema_version: 2
+project_name: fs_lrtc
+random_seeds: [42, 123, 2026]
+deterministic: true
+device: auto
+data:
+  source: processed/v1
+  split_version: v1
+  primary_split_family: primary
+  sensitivity_split_family: grouped_raw
+  preserve_all_samples: true
+  empty_text_policy: unk
+  duplicate_policy: deduplicate_same_label
+  conflicting_duplicate_policy: exclude_entire_group_from_primary
+preprocessing:
+  unicode_normalization: NFKC
+  lowercase: true
+  html_unescape: true
+  remove_html_tags: true
+  remove_headers: dataset_specific
+  tokenize: unicode_words_with_internal_apostrophe
+  max_length_classic: 200
+  max_length_bert: 256
+cross_validation:
+  source: frozen_split_files
+  outer_folds: 5
+  split_seed: 20260902
+  group_identical_texts_in_raw_sensitivity: true
+validation:
+  strategy: frozen_stratified_holdout_within_outer_train
+  fraction: 0.15
+  selector_fit_scope: inner_train_only
+  final_selector_refit_scope: outer_train_only
+feature_selection:
+  selectors: [none, df, ig, dfs]
+  primary_feature_count: 1000
+  sensitivity_feature_counts: [500, 1000, 1500, 2000]
+  minimum_document_frequency: 1
+  if_vocabulary_smaller: use_all_available
+training:
+  batch_size_classic: 32
+  batch_size_bert: 16
+  max_epochs_classic: 100
+  max_epochs_bert: 20
+  early_stopping:
+    monitor: validation_accuracy
+    mode: max
+    patience: 8
+    min_delta: 0.0001
+  gradient_clip_norm: 1.0
+metrics:
+  primary: accuracy
+  secondary: [macro_f1, balanced_accuracy]
+  report_mean_std: true
+  save_fold_predictions: true
+output:
+  save_config_snapshot: true
+  save_selected_features: true
+  save_predictions: true
+  save_checkpoints: best_only

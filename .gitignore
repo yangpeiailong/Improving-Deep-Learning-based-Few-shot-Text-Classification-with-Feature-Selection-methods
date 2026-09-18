@@ -1,0 +1,39 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+
+# Local machine configuration
+configs/paths.local.yaml
+configs/assets.local.yaml
+
+# Large pretrained resources and generated model artifacts
+artifacts/
+checkpoints/
+cache/
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Raw/intermediate data and per-run outputs
+data/raw/
+data/processed/
+data/splits/
+predictions/
+selected_features/
+training_history/
+run_records.jsonl
+*.inprogress/
+
+# Logs and editor/OS files
+*.log
+Thumbs.db
+.DS_Store

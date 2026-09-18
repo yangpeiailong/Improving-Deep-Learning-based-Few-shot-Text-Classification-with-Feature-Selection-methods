@@ -1,0 +1,13 @@
+schema_version: 1
+paper_root: "D:/path/to/paper_root"
+code_root: "D:/path/to/code_root"
+paths:
+  data_root: "${paper_root}/03_data"
+  raw_data_root: "${paper_root}/03_data/raw"
+  processed_data_root: "${paper_root}/03_data/processed"
+  split_root: "${paper_root}/03_data/splits"
+  audit_root: "${paper_root}/03_data/audit"
+  results_root: "${paper_root}/04_results"
+  supplementary_root: "${paper_root}/05_supplementary"
+  checkpoint_root: "${code_root}/artifacts/checkpoints"
+  cache_root: "${code_root}/artifacts/cache"

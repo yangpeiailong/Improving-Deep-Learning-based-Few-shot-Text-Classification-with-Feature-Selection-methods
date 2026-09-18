@@ -1,0 +1,42 @@
+schema_version: 1
+experiment_id: baseline_smoke_v1
+data_version: v1
+split_version: v1
+split_family: primary
+datasets: [20ng]
+folds: [0]
+seed: 42
+
+tokenizer:
+  unicode_normalization: NFKC
+  html_unescape: true
+  remove_html_tags: true
+  lowercase: true
+  token_pattern: unicode_words_with_internal_apostrophe
+
+feature_selection:
+  selectors: [none, df, ig, dfs]
+  feature_count: 1000
+  minimum_document_frequency: 1
+
+representation:
+  type: tfidf
+  use_idf: true
+  smooth_idf: true
+  sublinear_tf: true
+  norm: l2
+
+classifier:
+  type: logistic_regression
+  c_values: [0.1, 1.0, 10.0]
+  solver: lbfgs
+  max_iter: 2000
+  tolerance: 0.0001
+
+runtime:
+  thread_limit: 1
+
+output:
+  directory: smoke/baseline_smoke_v1
+  save_predictions: true
+  save_selected_features: true

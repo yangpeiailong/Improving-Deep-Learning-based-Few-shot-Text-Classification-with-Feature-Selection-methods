@@ -1,0 +1,13 @@
+schema_version: 1
+version: v1
+seed: 20260902
+outer_folds: 5
+inner_validation_fraction: 0.15
+strategies:
+  primary:
+    source: processed_v1
+    method: deterministic_stratified
+  grouped_raw:
+    source: frozen_raw
+    method: deterministic_stratified_group
+    group_key: exact_processed_text_sha256

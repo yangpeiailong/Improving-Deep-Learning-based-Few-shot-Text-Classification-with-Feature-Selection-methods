@@ -1,0 +1,181 @@
+{
+  "status": "passed",
+  "expected_runs": 3520,
+  "actual_rows": 3520,
+  "unique_runs": 3520,
+  "duplicate_keys": [],
+  "missing_keys": [],
+  "extra_keys": [],
+  "split_hash_conflicts": [],
+  "vocabulary_hash_conflicts": [],
+  "datasets": [
+    "20ng",
+    "ag_news",
+    "amazon_cells",
+    "amazon_review_full",
+    "amazon_review_polarity",
+    "bbc_sport",
+    "dbpedia",
+    "farm_ads",
+    "imdb",
+    "pang_lee",
+    "reuters8",
+    "sentence",
+    "sst5",
+    "wos5736",
+    "yelp_review_full",
+    "yelp_review_polarity"
+  ],
+  "models": [
+    "bert_bilstm_attention",
+    "bert_cls",
+    "bert_cnn",
+    "bert_mean",
+    "fasttext_cnn",
+    "fasttext_lstm",
+    "fasttext_residual_word_gcn",
+    "fasttext_wa",
+    "random_cnn",
+    "random_lstm",
+    "random_wa"
+  ],
+  "selectors": [
+    "df",
+    "dfs",
+    "ig",
+    "none"
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "expected_dataset_count": 16,
+  "expected_model_count": 11,
+  "expected_selector_count": 4,
+  "expected_fold_count": 5,
+  "model_set_mismatch": false,
+  "created_at_utc": "2026-09-16T06:34:31.852892+00:00",
+  "protocol": {
+    "datasets": 16,
+    "models": 11,
+    "folds": 5,
+    "selectors": [
+      "none",
+      "df",
+      "ig",
+      "dfs"
+    ],
+    "selected_feature_count": 1000,
+    "expected_runs": 3520
+  },
+  "family_reports": {
+    "classic": {
+      "status": "passed",
+      "expected_runs": 1920,
+      "actual_rows": 1920,
+      "unique_runs": 1920,
+      "duplicate_keys": [],
+      "missing_keys": [],
+      "extra_keys": [],
+      "split_hash_conflicts": [],
+      "vocabulary_hash_conflicts": [],
+      "family": "classic",
+      "observed_models": [
+        "fasttext_cnn",
+        "fasttext_lstm",
+        "fasttext_wa",
+        "random_cnn",
+        "random_lstm",
+        "random_wa"
+      ],
+      "expected_models": [
+        "fasttext_cnn",
+        "fasttext_lstm",
+        "fasttext_wa",
+        "random_cnn",
+        "random_lstm",
+        "random_wa"
+      ],
+      "model_set_mismatch": false,
+      "feature_count_errors": []
+    },
+    "gcn": {
+      "status": "passed",
+      "expected_runs": 320,
+      "actual_rows": 320,
+      "unique_runs": 320,
+      "duplicate_keys": [],
+      "missing_keys": [],
+      "extra_keys": [],
+      "split_hash_conflicts": [],
+      "vocabulary_hash_conflicts": [],
+      "family": "gcn",
+      "observed_models": [
+        "fasttext_residual_word_gcn"
+      ],
+      "expected_models": [
+        "fasttext_residual_word_gcn"
+      ],
+      "model_set_mismatch": false,
+      "feature_count_errors": []
+    },
+    "bert": {
+      "status": "passed",
+      "expected_runs": 1280,
+      "actual_rows": 1280,
+      "unique_runs": 1280,
+      "duplicate_keys": [],
+      "missing_keys": [],
+      "extra_keys": [],
+      "split_hash_conflicts": [],
+      "vocabulary_hash_conflicts": [],
+      "family": "bert",
+      "observed_models": [
+        "bert_bilstm_attention",
+        "bert_cls",
+        "bert_cnn",
+        "bert_mean"
+      ],
+      "expected_models": [
+        "bert_bilstm_attention",
+        "bert_cls",
+        "bert_cnn",
+        "bert_mean"
+      ],
+      "model_set_mismatch": false,
+      "feature_count_errors": []
+    }
+  },
+  "sources": {
+    "classic": {
+      "file_name": "combined_results.csv",
+      "parent_name": "classic_main_v1",
+      "sha256": "081f8173b5e8b07b26597b4bede35726074a3f8828ac5ca413bc495eae099c0f",
+      "rows": 1920
+    },
+    "gcn": {
+      "file_name": "combined_results.csv",
+      "parent_name": "gcn_v2",
+      "sha256": "5288cc531c818bf2cce375cf9be2af25e32a1cb45729e0b308af596aa018e9f7",
+      "rows": 320
+    },
+    "bert": {
+      "file_name": "combined_results.csv",
+      "parent_name": "bert_v3_full16",
+      "sha256": "8744361df7bb5309fa0e5ebaa1329ce3e767748cde1ec90ceef024b8c2aeec19",
+      "rows": 1280
+    }
+  },
+  "output_rows": {
+    "main_fold_results.csv": 3520,
+    "main_mean_std.csv": 704,
+    "main_paired_effects_vs_none.csv": 528,
+    "main_selector_summary.csv": 4,
+    "main_family_summary.csv": 12,
+    "main_significance_tests.csv": 12,
+    "main_runtime_summary.csv": 12
+  }
+}

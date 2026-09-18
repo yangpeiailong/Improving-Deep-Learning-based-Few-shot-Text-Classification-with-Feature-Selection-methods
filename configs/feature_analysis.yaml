@@ -1,0 +1,16 @@
+schema_version: 1
+extends: base.yaml
+experiment_id: feature_analysis_v1
+datasets: [20ng, farm_ads, amazon_review_full, wos5736]
+selectors: [df, ig, dfs]
+feature_counts: [500, 1000]
+analysis:
+  top_n_features: 20
+  report_class_association: true
+  inspect_label_tokens: true
+  inspect_metadata_tokens: true
+  inspect_document_frequency: true
+  compare_fold_stability: true
+  stability_metric: jaccard
+output:
+  directory: feature_analysis/feature_analysis_v1

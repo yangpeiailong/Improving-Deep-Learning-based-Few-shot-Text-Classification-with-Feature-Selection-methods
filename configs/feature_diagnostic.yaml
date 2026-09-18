@@ -1,0 +1,8 @@
+schema_version: 1
+experiment_id: feature_diagnostic_v1
+datasets: [20ng, farm_ads, amazon_review_full, wos5736]
+folds: [0]
+stages: [development, final]
+selectors: [df, ig, dfs]
+feature_counts: [500, 1000]
+top_features_to_preview: 20

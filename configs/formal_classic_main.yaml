@@ -1,0 +1,86 @@
+schema_version: 1
+experiment_id: formal_classic_main_v1
+data_version: v1
+split_version: v1
+split_family: primary
+datasets:
+  - 20ng
+  - ag_news
+  - amazon_cells
+  - amazon_review_full
+  - amazon_review_polarity
+  - bbc_sport
+  - dbpedia
+  - farm_ads
+  - imdb
+  - pang_lee
+  - reuters8
+  - sentence
+  - sst5
+  - wos5736
+  - yelp_review_full
+  - yelp_review_polarity
+folds: [0, 1, 2, 3, 4]
+seed: 42
+device: auto
+deterministic: true
+
+tokenizer:
+  unicode_normalization: NFKC
+  html_unescape: true
+  remove_html_tags: true
+  lowercase: true
+  token_pattern: unicode_words_with_internal_apostrophe
+
+feature_selection:
+  selectors: [none, df, ig, dfs]
+  feature_count: 1000
+  minimum_document_frequency: 1
+
+models:
+  - random_wa
+  - fasttext_wa
+  - random_cnn
+  - fasttext_cnn
+  - random_lstm
+  - fasttext_lstm
+
+architecture:
+  embedding_dimension: 100
+  embeddings_trainable: true
+  dropout: 0.5
+  cnn_filters: 100
+  cnn_kernel_sizes: [2, 3, 4]
+  lstm_hidden_size: 100
+  lstm_classifier_hidden_size: 128
+
+sequence:
+  max_length: 200
+  empty_document_policy: unk
+
+training:
+  optimizer: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  batch_size: 32
+  evaluation_batch_size: 128
+  maximum_epochs: 200
+  minimum_epochs: 10
+  early_stopping_patience: 25
+  early_stopping_min_delta: 0.0001
+  gradient_clip_norm: 1.0
+
+output:
+  directory: main/classic_v1/all_in_one
+  save_predictions: true
+  save_selected_features: true
+  save_training_history: true
+  save_model_checkpoints: false
+
+formal_orchestration:
+  output_base: main/classic_v1
+  shards:
+    1: [20ng, ag_news, amazon_cells, amazon_review_full]
+    2: [amazon_review_polarity, bbc_sport, dbpedia, farm_ads]
+    3: [imdb, pang_lee, reuters8, sentence]
+    4: [sst5, wos5736, yelp_review_full, yelp_review_polarity]

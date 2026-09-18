@@ -1,0 +1,61 @@
+schema_version: 1
+experiment_id: offline_bert_20ng_convergence_v2
+evaluation_scope: development_only
+data_version: v1
+split_version: v1
+split_family: primary
+datasets: [20ng]
+folds: [0]
+seed: 42
+device: auto
+deterministic: true
+
+tokenizer:
+  unicode_normalization: NFKC
+  html_unescape: true
+  remove_html_tags: true
+  lowercase: true
+  token_pattern: unicode_words_with_internal_apostrophe
+
+feature_selection:
+  selectors: [none]
+  feature_count: 1000
+  minimum_document_frequency: 1
+
+models: [bert_cls, bert_mean, bert_cnn, bert_bilstm_attention]
+
+sequence:
+  max_length: 192
+  dynamic_padding: true
+  pad_to_multiple_of: 8
+  empty_document_policy: bert_unk_token
+
+architecture:
+  dropout: 0.2
+  gradient_checkpointing: true
+  cnn_filter_count: 100
+  cnn_kernel_sizes: [2, 3, 4]
+  lstm_hidden_size: 128
+  attention_hidden_size: 128
+
+training:
+  optimizer: adamw
+  encoder_learning_rate: 0.00002
+  head_learning_rate: 0.001
+  weight_decay: 0.01
+  warmup_ratio: 0.025
+  batch_size: 4
+  evaluation_batch_size: 8
+  gradient_accumulation_steps: 8
+  mixed_precision: false
+  maximum_epochs: 40
+  minimum_epochs: 8
+  early_stopping_patience: 5
+  gradient_clip_norm: 1.0
+
+output:
+  directory: diagnostics/bert_convergence_v2
+  save_predictions: false
+  save_selected_features: true
+  save_training_history: true
+  save_model_checkpoints: false

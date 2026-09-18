@@ -1,0 +1,15 @@
+schema_version: 1
+
+fasttext:
+  source_path: "D:/fasttext/cc.en.300.bin"
+  reduced_path: "D:/fasttext/cc.en.100.bin"
+  expected_source_dimension: 300
+  target_dimension: 100
+  overwrite_reduced: false
+
+bert:
+  path: "D:/bert-base-uncased"
+  identity: "google-bert/bert-base-uncased"
+  local_files_only: true
+
+manifest_path: "${audit_root}/pretrained_assets_manifest.json"

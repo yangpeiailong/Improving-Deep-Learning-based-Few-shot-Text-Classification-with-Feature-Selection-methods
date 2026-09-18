@@ -1,0 +1,40 @@
+schema_version: 1
+encoding: utf-8
+text_filename: texts.txt
+label_filename: labels.txt
+metadata_filename: metadata.yaml
+main_datasets:
+  - 20ng
+  - reuters8
+  - amazon_cells
+  - farm_ads
+  - pang_lee
+  - sentence
+  - yelp_review_full
+  - yelp_review_polarity
+  - amazon_review_full
+  - amazon_review_polarity
+  - dbpedia
+  - wos5736
+  - ag_news
+  - imdb
+reserve_datasets:
+  - bbc_sport
+  - sst5
+registry:
+  20ng: {directory: 20ng, metadata: 20ng/metadata.yaml}
+  ag_news: {directory: ag_news, metadata: ag_news/metadata.yaml}
+  amazon_cells: {directory: amazon_cells, metadata: amazon_cells/metadata.yaml}
+  amazon_review_full: {directory: amazon_review_full, metadata: amazon_review_full/metadata.yaml}
+  amazon_review_polarity: {directory: amazon_review_polarity, metadata: amazon_review_polarity/metadata.yaml}
+  bbc_sport: {directory: bbc_sport, metadata: bbc_sport/metadata.yaml}
+  dbpedia: {directory: dbpedia, metadata: dbpedia/metadata.yaml}
+  farm_ads: {directory: farm_ads, metadata: farm_ads/metadata.yaml}
+  imdb: {directory: imdb, metadata: imdb/metadata.yaml}
+  pang_lee: {directory: pang_lee, metadata: pang_lee/metadata.yaml}
+  reuters8: {directory: reuters8, metadata: reuters8/metadata.yaml}
+  sentence: {directory: sentence, metadata: sentence/metadata.yaml}
+  sst5: {directory: sst5, metadata: sst5/metadata.yaml}
+  wos5736: {directory: wos5736, metadata: wos5736/metadata.yaml}
+  yelp_review_full: {directory: yelp_review_full, metadata: yelp_review_full/metadata.yaml}
+  yelp_review_polarity: {directory: yelp_review_polarity, metadata: yelp_review_polarity/metadata.yaml}
